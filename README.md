@@ -43,11 +43,14 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 # Design e Mockup
 
 **login**
+
 ![immagine](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/057e2953-1733-4f58-af36-ff949bcd4510)
 
 **aggiunta password**
+
 ![immagine](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/4950508c-21ed-4d00-b510-90bfa25d9383)
 
-**gestione passowrds**
+**gestione passwords**
+
 ![immagine](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/b1df62b3-3319-449c-b202-e7ab6235c1db)
 
