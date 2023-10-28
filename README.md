@@ -18,6 +18,7 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 - Gestione password(add,delete,modify)
 - Controllo sicurezza password
 - Notifica aggiornamento e modifica  password obsolete
+- rigenerazione password
 
 **Entità**
 - Account
