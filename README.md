@@ -17,7 +17,7 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 - Creazione Account
 - Gestione password(add,delete,modify)
 - Controllo sicurezza password
-- Aggiornamento e modifica automatica password obsolete
+- Notifica aggiornamento e modifica  password obsolete
 
 **Entità**
 - Account
