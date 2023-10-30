@@ -19,6 +19,7 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 - Controllo sicurezza password
 - Notifica aggiornamento e modifica  password obsolete
 - rigenerazione password
+- applicazione pratica(si spera) della CIA Triad(sha512,rsa)
 
 **Entità**
 - Account
