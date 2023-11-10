@@ -7,7 +7,7 @@ Risolve il problema legato alla gestione delle password. Più nello specifico il
 
 **Come lo risolve?**
 
-Lo risolve utilizzando una master password. L'utente in questo modo deve solo ricordarsi una credenziale.
+Lo risolve utilizzando uno storage online al quale si può accedere solo tramite una master password. L'utente in questo modo deve solo ricordarsi una credenziale.
 
 **A chi è rivolto?**
 
@@ -15,16 +15,14 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 
 **Funzionalità**
 - Creazione Account
+- Login sicuro e affidabile
 - Gestione password(add,delete,modify)
 - Controllo sicurezza password
-- Notifica aggiornamento e modifica  password obsolete
-- rigenerazione password
-- applicazione pratica(si spera) della CIA Triad(sha512,rsa)
+- Notifica aggiornamento e modifica password obsolete tramite rigenerazione password
 
 **Entità**
 - Account
-- Password
-- Credenziali
+- Credenziale
 
 <br><br>
 
