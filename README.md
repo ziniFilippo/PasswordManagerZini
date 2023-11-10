@@ -28,8 +28,7 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 
 # Diagramma E-R
 
-![immagine](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/fad8a014-4f1e-4887-b338-ed759c768bd2)
-
+![ERD(1)](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/00412548-9594-400a-a31f-ec78cc81a27c)
 
 <br><br>
 # Modello(i) Relazionale(i)
