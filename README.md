@@ -34,7 +34,6 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 # Modello(i) Relazionale(i)
 
 ![MR](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/25960f2c-a043-4e0b-a94a-94bdfef9f43c)
-![immagine](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/14b58d6d-a763-43ae-9e9a-359958366621)
 ![MR(2)](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/bc3df339-5b7e-449e-b415-7fcedea8e0ef)
 
 
