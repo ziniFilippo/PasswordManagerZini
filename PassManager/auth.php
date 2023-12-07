@@ -10,14 +10,14 @@
     if ($user != "" and $password != ""){
         $_SESSION["user"] = $user;
         $_SESSION["password"] = $password;
-        $check_user = "INSERT INTO ACCOUNT(USERNAME,M5A) VALUES('".$user."','".$password."')";
+        $check_user = "SELECT * FROM ACCOUNT WHERE USERNAME='".$user."' AND MD5='".$password."';";
         if ($conn->query($check_user) === TRUE) {
-            echo "New record created successfully";
+            echo "Redirecting to your home";
         } else {
           echo "Error: " . $check_user . "<br>" . $conn->error;
         }
         $conn->close();
-        redirect("./Home.php");
+        redirect("./home.php");
     } else {
         redirect("./login.php");
     }
