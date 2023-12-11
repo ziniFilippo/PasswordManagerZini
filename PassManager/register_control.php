@@ -7,6 +7,7 @@
     }
     $user = $_POST['user'];
     $password = $_POST['password'];
+    $error = 0;
     if ($user != "" and $password != ""){
         $_SESSION["user"] = $user;
         $_SESSION["password"] = $password;
@@ -14,12 +15,13 @@
         if ($conn->query($add_user) === TRUE) {
             echo "New record created successfully";
         } else {
-          echo "Error: " . $add_user . "<br>" . $conn->error;
+            $error = 1;
+            header("Location: ./register.php?error=$error");
         }
         $conn->close();
         redirect("./home.php");
     } else {
-        $_SESSION["error"] = 1;
-        redirect("./register.php");
+        $error = 1;
+        header("Location: ./register.php?error=$error");
     }
 ?>

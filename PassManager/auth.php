@@ -7,18 +7,22 @@
     }
     $user = $_POST['user'];
     $password = $_POST['password'];
+    $error = 0;
     if ($user != "" and $password != ""){
         $_SESSION["user"] = $user;
         $_SESSION["password"] = $password;
-        $check_user = "SELECT * FROM ACCOUNT WHERE USERNAME='".$user."' AND MD5='".$password."';";
-        if ($conn->query($check_user) === TRUE) {
+        $check_user = "SELECT * FROM ACCOUNT WHERE USERNAME=".$user." AND MD5=".$password;
+        $result = $conn->query($check_user);
+        if ( $result->num_rows > 0) {
             echo "Redirecting to your home";
         } else {
-          echo "Error: " . $check_user . "<br>" . $conn->error;
+            $error = 1;
+            header("Location: ./login.php?error=$error");
         }
         $conn->close();
         redirect("./home.php");
     } else {
-        redirect("./login.php");
+        $error = 1;
+        header("Location: ./login.php?error=$error");
     }
 ?>

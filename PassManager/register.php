@@ -2,11 +2,14 @@
     <head>
         <title>Register</title>
         <?php
-            session_start();
-            if ($_SESSION["error"] == 1){
-                echo "Inserisci username e/o password";
-            }
-            $_SESSION["error"] = 0; 
+             if (!isset($error)){
+                 $error = 0; 
+             } else {
+                $error = $_POST['error'];
+             }
+             if ($error == 1){
+                 echo "Username e/o password errata";
+             }
         ?>
     </head>
     <body bgcolor="grey">

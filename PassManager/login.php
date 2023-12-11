@@ -2,7 +2,13 @@
     <head>
         <title>Login</title>
         <?php
-            session_start();
+            $error = $_POST['error'];
+            if (!isset($error)){
+                $error = 0; 
+            }
+            if ($error == 1){
+                echo "Username e/o password errata";
+            }
         ?>
     </head>
     <body bgcolor="grey">
