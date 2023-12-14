@@ -1,27 +1,23 @@
 <?php
     include "connection.php";
-    session_start();
+
     function redirect($url){
         header("Location: ".$url);
         exit();
     }
-    $user = $_POST['user'];
-    $password = $_POST['password'];
-    $error = 0;
-    if ($user != "" and $password != ""){
-        $_SESSION["user"] = $user;
-        $_SESSION["password"] = $password;
-        $add_user = "INSERT INTO ACCOUNT(USERNAME,MD5) VALUES('".$user."','".$password."')";
-        if ($conn->query($add_user) === TRUE) {
-            echo "New record created successfully";
-        } else {
-            $error = 1;
-            header("Location: ./register.php?error=$error");
-        }
-        $conn->close();
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $conn->prepare("INSERT INTO ACCOUNT (username, MD5) VALUES (?, ?)");
+        $stmt->bind_param("ss", $username, $hashed_password);
+        $stmt->execute();
+
+        session_start();
+        $_SESSION['username'] = $username;
         redirect("./home.php");
     } else {
-        $error = 1;
-        header("Location: ./register.php?error=$error");
+        redirect("./register.php");
     }
 ?>

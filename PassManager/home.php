@@ -1,7 +1,7 @@
 <?php
     session_start();
-    echo "Welcome ".$_SESSION["user"]."<br><br>";
+    echo "Welcome ".$_SESSION["username"]."<br><br>";
 ?>
 <body>
-    <a href="/">logout</a>
+    <a href="./logout.php">logout</a>
 </body>

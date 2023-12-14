@@ -2,11 +2,7 @@
     <head>
         <title>Login</title>
         <?php
-            $error = $_POST['error'];
-            if (!isset($error)){
-                $error = 0; 
-            }
-            if ($error == 1){
+            if (isset($_GET['error'])){
                 echo "Username e/o password errata";
             }
         ?>
@@ -14,11 +10,12 @@
     <body bgcolor="grey">
        <h1>Login Password Manager</h1>
         <form action="./auth.php" method="post">
-            <label for="user">Username:</label>
-            <input type="text" id="user" name="user"><br><br>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br><br>
             <label for="password">Password:</label>
             <input type="text" id="password" name="password"><br><br>
             <input type="submit" value="Submit">
         </form>
+        <a href="./register.php">Non ho un account.</a>
     </body>
 </html>

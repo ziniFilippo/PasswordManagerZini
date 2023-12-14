@@ -1,28 +1,33 @@
-<?php 
+<?php
     include "connection.php";
-    session_start();
+
     function redirect($url){
         header("Location: ".$url);
         exit();
     }
-    $user = $_POST['user'];
-    $password = $_POST['password'];
-    $error = 0;
-    if ($user != "" and $password != ""){
-        $_SESSION["user"] = $user;
-        $_SESSION["password"] = $password;
-        $check_user = "SELECT * FROM ACCOUNT WHERE USERNAME=".$user." AND MD5=".$password;
-        $result = $conn->query($check_user);
-        if ( $result->num_rows > 0) {
-            echo "Redirecting to your home";
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $stmt = $conn->prepare("SELECT * FROM ACCOUNT WHERE USERNAME = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            if (password_verify($password, $user['MD5'])) {
+                session_start();
+                $_SESSION['username'] = $username;
+                redirect("./home.php");
+            } else {
+                redirect("./login.php?error=Invalid password");
+            }
         } else {
-            $error = 1;
-            header("Location: ./login.php?error=$error");
+            redirect("./login.php?error=Invalid username");
         }
-        $conn->close();
-        redirect("./home.php");
     } else {
-        $error = 1;
-        header("Location: ./login.php?error=$error");
+        redirect("./login.php");
     }
 ?>
