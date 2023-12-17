@@ -3,7 +3,7 @@ Un password manager online fatto da Filippo Zini.
 
 **Che problema risolve?**
 
-Risolve il problema legato alla gestione delle password. Più nello specifico il problema riguarda il "doversi ricordare" quale password è stata utilizzata per quale sito web.
+Risolve il problema legato alla gestione delle password. Più nello specifico il problema riguarda il "doversi ricordare" quale password è stata utilizzata per quale sito web/applicazione.
 
 **Come lo risolve?**
 
@@ -15,6 +15,7 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 
 **Funzionalità**
 - Creazione Account
+- Eliminazione Account
 - Login sicuro e affidabile
 - Gestione password(add,delete,modify)
 - Controllo sicurezza password
@@ -23,22 +24,24 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 **Entità**
 - Account
 - Credenziale
+- Sessione
+- Verifica
 
 <br><br>
 
 # Diagramma E-R
 
-![ERD(1)](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/00412548-9594-400a-a31f-ec78cc81a27c)
+![ERD](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/2290b4f6-52a0-4fee-8567-895849c964f0)
 
 <br><br>
 # Modello(i) Relazionale(i)
 
-![MR](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/25960f2c-a043-4e0b-a94a-94bdfef9f43c)
-![MR](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/c43c7b9d-ac3e-4fdf-995a-111e4593b294)
-
+- **Account**(<ins>**id**</ins> ,mail,sha3,salt);
+- **Credenziale**(<ins>**id**</ins> ,<ins>account_id</ins>,mail,password,sito,data);
+- **Sessione**(<ins>**id_sessione**</ins> ,<ins>account_id</ins>,data_inizio,timeout);
+- **Verifica**(<ins>**id**</ins> ,mail,data_richiesta,token_auth,sha3,salt);
 
 <br><br>
-
 
 # Design e Mockup
 
@@ -52,4 +55,3 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 **gestione passwords**
 
 ![immagine](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/b1df62b3-3319-449c-b202-e7ab6235c1db)
-
