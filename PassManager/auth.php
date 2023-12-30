@@ -15,9 +15,10 @@
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             $user = $result->fetch_assoc();
-            $salt = $user['salt'];
+            $salt = $user['SALT'];
             $password = $password.$salt;
-            if (password_verify($password, $user['sha3'])) {
+            $password = hash("sha3-512",$password);
+            if ($password == $user['SHA3']) {
                 session_start();
                 $_SESSION['username'] = $username;
                 redirect("./home.php");

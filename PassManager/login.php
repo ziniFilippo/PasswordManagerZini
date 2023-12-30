@@ -3,7 +3,7 @@
         <title>Login</title>
         <?php
             if (isset($_GET['error'])){
-                echo "Username e/o password errata";
+                echo $_GET['error']."<br>";
             }
         ?>
     </head>
