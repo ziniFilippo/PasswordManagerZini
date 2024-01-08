@@ -5,7 +5,7 @@
             if (isset($_GET['error'])){
                 echo $_GET['error']."<br>";
             }
-        ?>
+        ?>  
     </head>
     <body bgcolor="grey">
        <h1>Registration Password Manager</h1>
