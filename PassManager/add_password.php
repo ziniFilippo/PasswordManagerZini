@@ -2,7 +2,6 @@
     <head>
         <title>Add Credential</title>
         <?php
-            session_start();
             if (isset($_GET['error'])){
                 echo $_GET['error']."<br>";
             }
