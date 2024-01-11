@@ -34,6 +34,7 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 ![ERD](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/2290b4f6-52a0-4fee-8567-895849c964f0)
 
 <br><br>
+
 # Modello(i) Relazionale(i)
 
 - **Account**(<ins>**id**</ins> ,mail,sha3,salt);
@@ -55,3 +56,13 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 **gestione passwords**
 
 ![immagine](https://github.com/ziniFilippo/PasswordManagerZini/assets/101709141/b1df62b3-3319-449c-b202-e7ab6235c1db)
+
+
+
+# TODO LIST
+
+- [x]aggiungere eliminazione e modifica di password singole salvate nella tabella in view_password.php
+
+- [x]aggiungere ricerca password per sito o mail in view_password
+
+- aggiungere funzionalità profilo
