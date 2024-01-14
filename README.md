@@ -61,8 +61,8 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 
 # TODO LIST
 
-- [x] aggiungere eliminazione e modifica di password singole salvate nella tabella in view_password.php
+- [x]aggiungere eliminazione e modifica di password singole salvate nella tabella in view_password.php
 
-- [x] aggiungere ricerca password per sito o mail in view_password
+- [x]aggiungere ricerca password per sito o mail in view_password
 
-- [ ] aggiungere funzionalità profilo
+- aggiungere funzionalità profilo
