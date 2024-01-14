@@ -1,5 +1,5 @@
 <?php
-    include "connection.php";
+    include "../session/connection.php";
 
     function redirect($url){
         header("Location: ".$url);

@@ -1,6 +1,6 @@
 <?php
-    include "connection.php";
-    include "cookie_check.php";
+    include "./session/connection.php";
+    include "./session/cookie_check.php";
     $stmt = $conn->prepare("SELECT * FROM ACCOUNT WHERE ID = ?");
     $stmt->bind_param("s", $user_id);
     $stmt->execute();
@@ -13,7 +13,7 @@
     <br>
     <a href="./logout.php">logout</a>
     <br>
-    <a href="./view_password.php">view passwords</a>
+    <a href="./passwords/view_password.php">view passwords</a>
     <br>
-    <a href="./profile.php">view profile</a>
+    <a href="./profile/profile.php">view profile</a>
 </body>

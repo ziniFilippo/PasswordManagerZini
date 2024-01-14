@@ -1,5 +1,5 @@
 <?php
-    include "connection.php";
+    include "../session/connection.php";
     function redirect($url){
         header("Location: ".$url);
         exit();
@@ -41,7 +41,7 @@
             $delete = $conn->prepare("DELETE FROM VERIFICA WHERE TOKEN_AUTH = ?");  
             $delete->bind_param("s", $code);
             $delete->execute();
-            redirect("./login.php");    
+            redirect("../login/login.php");    
         } else {
             redirect("./verify_code.php?error=Invalid code");
         }

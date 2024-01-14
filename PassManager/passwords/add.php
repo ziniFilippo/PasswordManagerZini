@@ -1,6 +1,6 @@
 <?php
-    include "./connection.php";
-    include "./cookie_check.php";
+    include "../session/connection.php";
+    include "../session/cookie_check.php";
     $id = $user_id;
     $password = $_POST['password'];
     $url = $_POST['url'];

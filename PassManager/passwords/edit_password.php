@@ -2,8 +2,8 @@
     <head>
         <title>Editing Password...</title>
         <?php
-            include "connection.php";
-            include "cookie_check.php";
+            include "../session/connection.php";
+            include "../session/cookie_check.php";
             $password_id = $_GET['id'];
             $stmt = $conn->prepare("SELECT * FROM CREDENZIALE WHERE ID = ?");
             $stmt->bind_param("s", $password_id);

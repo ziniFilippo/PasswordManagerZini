@@ -1,5 +1,5 @@
 <?php
-    include "connection.php";
+    include "../session/connection.php";
 
     function redirect($url){
         header("Location: ".$url);
@@ -27,12 +27,12 @@
                 $qry = $conn->prepare("INSERT INTO SESSIONE(ID_SESSIONE,ACCOUNT_ID,DATA_INIZIO,TIMEOUT) VALUES (?,?,?,?)");
                 $qry->bind_param("ssss",$sess,$user_id,$time,$timeout);
                 $qry->execute();
-                redirect("./home.php");
+                redirect("../home.php");
             } else {
                 redirect("./login.php?error=Invalid password");
             }
         } else {
-            redirect("./login.php?error=Invalid username");
+            redirect("./login.php?error=Invalid or non-existent e-mail");
         }
     } else {
         redirect("./login.php");
