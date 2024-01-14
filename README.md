@@ -65,4 +65,4 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 
 - [x] aggiungere ricerca password per sito o mail in view_password
 
-- [ ] aggiungere funzionalità profilo
+- [x] aggiungere funzionalità profilo
