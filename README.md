@@ -63,6 +63,12 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 
 - [x] aggiungere eliminazione e modifica di password singole salvate nella tabella in view_password.php
 
-- [x] aggiungere ricerca password per sito o mail in view_password
+- [x] aggiungere ricerca password per sito o mail in view_password.php
 
 - [x] aggiungere funzionalità profilo
+
+- [ ] implementare ajax in view_password.php
+
+- [ ] aggiungere il controllo password obsolete e la generazione di nuove password casuali
+
+- [ ] aggiungere la crittografia per le credenziali salvate decrittabili tramite master password

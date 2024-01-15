@@ -43,6 +43,12 @@
         $stmt->bind_param("sss", $id, $search, $search);
         $stmt->execute();
         $result = $stmt->get_result();
+    } else if (!isset($_GET['search']) || $_GET['search'] == ""){
+        $stmt = $conn->prepare("SELECT * FROM CREDENZIALE WHERE ACCOUNT_ID = ?");
+        $stmt->bind_param("s", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    }
         echo "<h1>Your Passwords</h1>";
         echo '<input type="text" id="search" name="search" placeholder="Search a password..."> <button onclick="search()">Search</button> <br><br>';
         echo '<script>
@@ -81,43 +87,6 @@
         echo "<br><br>";
         echo "<a href='../home.php' class = 'link'>home</a>";
         exit();
-    } else if (!isset($_GET['search']) || $_GET['search'] == ""){
-        $stmt = $conn->prepare("SELECT * FROM CREDENZIALE WHERE ACCOUNT_ID = ?");
-        $stmt->bind_param("s", $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        echo "<h1>Your Passwords</h1>";
-        echo '<input type="text" id="search" name="search" placeholder="Search a password..."> <button onclick="search()">Search</button> <br><br>';
-        echo '<script>
-                function search(){
-                    var search = document.getElementById("search").value;
-                    window.location.href = "./view_password.php?search="+search;
-                }
-            </script>';
-        if ($result->num_rows > 0) {
-            echo "<table>";
-            echo "<tr>";
-            echo "<th>URL</th>";
-            echo "<th>MAIL</th>";
-            echo "<th>PASSWORD</th>";
-            echo "<th>DATA</th>";
-            echo "<th>EDIT</th>";
-            echo "<th>DELETE</th>";
-            echo "</tr>";
-            while($row = $result->fetch_assoc()) {
-                echo "<td>".$row['SITO']."</td>";
-                echo "<td>".$row['MAIL']."</td>";
-                echo "<td>".$row['PASSWORD']."</td>";
-                echo "<td>".$row['DATA']."</td>";
-                echo "<td><a href='./edit_password.php?id=".$row['ID']."'>edit</a></td>";
-                echo "<td><a href='./delete_password.php?id=".$row['ID']."'>delete</a></td>";
-                echo "</tr>";
-            }
-            echo "</table>";
-        } else {
-            echo "<p>No passwords found</p>";
-        }
-    }
 ?>
 <br><br>
 <a href="./add_password.php" class = "link">add password</a>
