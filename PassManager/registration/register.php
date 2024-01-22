@@ -16,6 +16,6 @@
             <input type="password" id="password" name="password"><br><br>
             <input type="submit" value="Submit">
         </form>
-        <a href="../login.php">Ho già un account.</a>
+        <a href="../login/login.php">Ho già un account.</a>
     </body>
 </html>

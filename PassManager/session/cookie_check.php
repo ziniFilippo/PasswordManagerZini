@@ -22,6 +22,5 @@
             header("Location: ../login/login.php");
             exit;
         }
-
         $user_id = $session['ACCOUNT_ID'];
 ?>
