@@ -17,11 +17,12 @@
     }
 
     $data = array();
+    $data[0] = array("length" => $result->num_rows);
     while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
+        $data[1] = $row;
     }
     if (count($data) == 0){
-        $data[] = array("SITO" => "No results found", "MAIL" => "", "PASSWORD" => "", "DATA" => "");
+        $data = array("error" => "No results found");
     }
     header('Content-Type: application/json');
     echo json_encode($data);

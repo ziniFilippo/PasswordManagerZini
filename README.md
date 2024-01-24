@@ -67,8 +67,8 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 
 - [x] aggiungere funzionalità profilo
 
-- [ ] implementare ajax in view_password.php
+- [x] implementare ajax in view_password.php
 
-- [ ] aggiungere il controllo password obsolete e la generazione di nuove password casuali
+- [x] aggiungere il controllo password obsolete e la generazione di nuove password casuali
 
 - [ ] aggiungere la crittografia per le credenziali salvate decrittabili tramite master password
