@@ -1,6 +1,6 @@
 <?php
     include "../session/connection.php";
-    $stmt = $conn->prepare("SELECT * FROM CREDENZIALE");
+    $stmt = $conn->prepare("SELECT * FROM VERIFICA");
     $stmt->execute();
     $result = $stmt->get_result();
     $data = array();

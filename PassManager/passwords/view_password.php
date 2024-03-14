@@ -61,7 +61,7 @@
             let choice = confirm("Are you sure you want to delete this password?");
             if (choice == true){
                 var xhr = new XMLHttpRequest();
-                xhr.open("GET", "./delete_password.php?id=" + id, true);
+                xhr.open("GET", "../api/api_delete_password.php?id=" + id, true);
                 xhr.onload = function() {                
                     search(document.getElementById('search').value);
                 }
@@ -75,7 +75,7 @@
         function search(query) {
             console.log(query);
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "./search_api.php?search=" + query);
+            xhr.open("GET", "../api/api_search.php?search=" + query);
             xhr.onload = function() {
                 const data = JSON.parse(xhr.responseText);
                 var results = document.getElementById('results');

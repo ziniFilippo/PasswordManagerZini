@@ -18,8 +18,10 @@
 
     $data = array();
     $data[0] = array("length" => $result->num_rows);
+    $i = 1;
     while ($row = $result->fetch_assoc()) {
-        $data[1] = $row;
+        $data[$i] = $row;
+        $i++;
     }
     if (count($data) == 0){
         $data = array("error" => "No results found");

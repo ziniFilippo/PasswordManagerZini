@@ -9,5 +9,5 @@
     $stmt = $conn->prepare("INSERT INTO CREDENZIALE (ACCOUNT_ID, SITO, MAIL, PASSWORD, DATA) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("sssss", $id, $url, $mail, $password, $data);
     $stmt->execute();
-    header("Location: ./view_password.php");
+    header("Location: ../passwords/view_password.php");
 ?>

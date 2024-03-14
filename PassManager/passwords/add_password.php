@@ -9,7 +9,7 @@
     </head>
     <body bgcolor="grey">
        <h1>Add a credential</h1>
-        <form action="./add.php" method="post">
+        <form action="../api/api_add_password.php" method="post">
             <label for="password">Password:</label>
             <input type="text" id="password" name="password"><br><br>
             <label for="url">URL:</label>

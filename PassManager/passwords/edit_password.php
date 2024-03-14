@@ -33,7 +33,7 @@
        <h1>Password Editor</h1>
        <p>Insert the new values for the password <h4><b>(submit if you want to cancel this operation)</b></h4></p>
         <?php
-        echo '<form action="./edit.php?id='.$password_id.'" method="post">'
+        echo '<form action="../api/api_edit_password.php?id='.$password_id.'" method="post">'
         ?>
             <label for="url">URL:</label>
             <?php
