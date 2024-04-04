@@ -18,7 +18,7 @@
 
     $data = array();
     $data[0] = array("length" => $result->num_rows);
-    $i = 1;
+    $i = 0;
     while ($row = $result->fetch_assoc()) {
         $data[$i] = $row;
         $i++;

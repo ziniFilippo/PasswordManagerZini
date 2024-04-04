@@ -5,5 +5,3 @@
     $stmt = $conn->prepare("DELETE FROM CREDENZIALE WHERE ID = ?");
     $stmt->bind_param("s", $password_id);
     $stmt->execute();
-    header("Location: ./view_password.php");
-?>

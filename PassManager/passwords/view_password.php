@@ -6,7 +6,6 @@
         justify-content: center;
         align-items: center;
         background-color: #343a40;
-        linear-gradient(to right top, #343a40, #2b2c31, #211f22, #151314, #000000);
     }
  
     h1 {
@@ -36,33 +35,69 @@
 </style>
 </head>
 <body>
+<script> 
+    async function verificaPassword(password) {
+        
+        // Simuliamo una richiesta all'API (sostituisci l'URL con quello effettivo dell'API)
+        const url = '../api/api_ver_master.php';
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password })
+        };
+    
+        try {
+            const response = await fetch(url, requestOptions);
+            const data = await response.json();
+            
+            // Verifica la risposta dell'API
+            if (response.ok && data.result === 200) {
+               return true;
+            } else {
+                throw new Error('Errore nella verifica della password');
+            }
+        } catch (error) {
+            console.error('Errore:', error);
+            return false; // Segnala un errore
+        }
+    } 
+</script>
 <?php
     include "../session/connection.php";
     include "../session/cookie_check.php";
 
+    echo 
+    "<script>
+        //var input = prompt('inserisci la master password');
+        //if(verificaPassword(input)){
+        //}
+    </script>";
     $stmt = $conn->prepare("SELECT DATA,SITO,MAIL FROM CREDENZIALE WHERE ACCOUNT_ID = ?");
     $stmt->bind_param("s", $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    $last_password_update = new DateTime($row['DATA']);
-    $current_date = new DateTime();
-    $sito = $row['SITO'];
-    $mail = $row['MAIL'];
+    if($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $last_password_update = new DateTime($row['DATA']);
+        $current_date = new DateTime();
+        $sito = $row['SITO'];
+        $mail = $row['MAIL'];
 
-    $interval = $last_password_update->diff($current_date);
-    if ($interval->m >= 1) {
-        echo "<script>alert('È passato un mese dall'ultimo aggiornamento della tua password. Per favore, aggiorna la tua password.(sito:[".$sito."];mail:[".$mail."]');</script>";
+        $interval = $last_password_update->diff($current_date);
+        if ($interval->m >= 1) {
+            echo "<script>alert('È passato un mese dall'ultimo aggiornamento della tua password. Per favore, aggiorna la tua password.(sito:[".$sito."];mail:[".$mail."]'));</script>";
+        }
     }
 ?>
 
 <script>
         function remove(id){
             let choice = confirm("Are you sure you want to delete this password?");
+            console.log("eliminata"+id);
             if (choice == true){
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "../api/api_delete_password.php?id=" + id, true);
-                xhr.onload = function() {                
+                xhr.onload = function() {
                     search(document.getElementById('search').value);
                 }
                 xhr.send();
@@ -95,14 +130,21 @@
                 });
                 table.appendChild(headerRow);
 
-                for (var i = 1; i < data.length; i++) {
+                for (var i = 0; i < data.length; i++) {
                     var row = document.createElement('tr');
-                    ['SITO', 'MAIL', 'PASSWORD', 'DATA'].forEach(function(field) {
+                    var td = document.createElement('td');
+                    var a = document.createElement('a')
+                    a.href = data[i]['SITO'];
+                    a.textContent = data[i]['SITO'];
+                    td.appendChild(a);
+                    row.appendChild(td);
+                    ['MAIL', 'PASSWORD', 'DATA'].forEach(function(field) {
                         var td = document.createElement('td');
                         td.textContent = data[i][field];
                         row.appendChild(td);
                     });
                     var pass_id = data[i]['ID'];
+                    console.log(pass_id);
                     var editButton = document.createElement('button');
                     editButton.textContent = 'edit';
                     editButton.onclick = function() { edit(pass_id); };
@@ -112,7 +154,10 @@
 
                     var deleteButton = document.createElement('button');
                     deleteButton.textContent = 'delete';
-                    deleteButton.onclick = function() { remove(pass_id); };
+                    deleteButton.id = pass_id;
+                    deleteButton.addEventListener('click', function(){
+                        remove(this.getAttribute("id"));
+                    });
                     var deleteCell = document.createElement('td');
                     deleteCell.appendChild(deleteButton);
                     row.appendChild(deleteCell);
