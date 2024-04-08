@@ -9,5 +9,4 @@
     $qry = $conn->prepare("UPDATE CREDENZIALE SET SITO = ?, MAIL = ?, PASSWORD = ?, DATA = ? WHERE ID = ?");
     $qry->bind_param("sssss", $url, $mail, $password, $data, $password_id);
     $qry->execute();
-    header("Location: ./view_password.php");
-?>
+    header("Location: ../passwords/view_password.php");

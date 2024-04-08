@@ -32,6 +32,12 @@
         padding: 12px 15px;
         border-bottom: 1px solid #dddddd;
     }
+    .hidetext { 
+        -webkit-text-security: disc; 
+        }
+    .showtext { 
+        -webkit-text-security: none; 
+        }
 </style>
 </head>
 <body>
@@ -85,7 +91,7 @@
 
         $interval = $last_password_update->diff($current_date);
         if ($interval->m >= 1) {
-            echo "<script>alert('È passato un mese dall'ultimo aggiornamento della tua password. Per favore, aggiorna la tua password.(sito:[".$sito."];mail:[".$mail."]'));</script>";
+            echo "<script>alert('È passato più di un mese dall\'ultimo aggiornamento della tua password. Per favore, aggiorna la tua password.(sito:[".$sito."];mail:[".$mail."]');</script>";
         }
     }
 ?>
@@ -139,9 +145,26 @@
                     td.appendChild(a);
                     row.appendChild(td);
                     ['MAIL', 'PASSWORD', 'DATA'].forEach(function(field) {
-                        var td = document.createElement('td');
-                        td.textContent = data[i][field];
-                        row.appendChild(td);
+                        if(field == 'PASSWORD'){
+                            var td = document.createElement('td');
+                            var show = document.createElement('input');
+                            td.className = 'hidetext';
+                            show.type = 'checkbox';
+                            show.onclick = function(){
+                                if (show.checked) {
+                                    td.className = 'showtext';
+                                }else{
+                                    td.className = 'hidetext';
+                                }
+                            }
+                            td.textContent = data[i][field];
+                            row.appendChild(td);
+                            td.appendChild(show);                            
+                        } else {
+                            var td = document.createElement('td');
+                            td.textContent = data[i][field];
+                            row.appendChild(td);
+                        }
                     });
                     var pass_id = data[i]['ID'];
                     console.log(pass_id);

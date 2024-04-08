@@ -21,7 +21,8 @@
             if ($password == $user['SHA3']) {
                 $sess = bin2hex(random_bytes(25));
                 setcookie("pm_sess",$sess, time() + 3600, "/");
-                $timeout = date("Y-m-d H:i:s",mktime(date('H')+2,date('i'),date('s'),date('m'),date('d'),date('Y')));
+                $data = mktime(date('H')+3,date('i'),date('s'),date('m'),date('d'),date('Y'));
+                $timeout = date('Y-m-d H:i:s',$data);
                 $time = date("Y-m-d H:i:s"); 
                 $user_id = $user['ID'];	
                 $qry = $conn->prepare("INSERT INTO SESSIONE(ID_SESSIONE,ACCOUNT_ID,DATA_INIZIO,TIMEOUT) VALUES (?,?,?,?)");
