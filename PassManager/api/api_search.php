@@ -1,6 +1,7 @@
 <?php
     include "../session/connection.php";
     include "../session/cookie_check.php";
+    include "./encryption.php";
     $id = $user_id;
     if (isset($_GET['search'])){
         $search = $_GET['search'];
@@ -20,6 +21,7 @@
     $data[0] = array("length" => $result->num_rows);
     $i = 0;
     while ($row = $result->fetch_assoc()) {
+        $row['PASSWORD'] = secured_decrypt($row['PASSWORD']);
         $data[$i] = $row;
         $i++;
     }

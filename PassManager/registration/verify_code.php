@@ -41,7 +41,21 @@
             $delete = $conn->prepare("DELETE FROM VERIFICA WHERE TOKEN_AUTH = ?");  
             $delete->bind_param("s", $code);
             $delete->execute();
-            redirect("../login/login.php");    
+            $ssl_key = $_GET['key'];
+            $file = './tmp'.$mail_id.'.txt';
+            $file_handle = fopen($file, 'wr');
+            fwrite($file_handle, "KEY=".$ssl_key);
+            fclose($file_handle);
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename='.basename($file));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            header("Content-Type: text/plain");
+            readfile($file);
+            //unlink($file);
+            redirect("../login/login.php");
         } else {
             redirect("./verify_code.php?error=Invalid code");
         }

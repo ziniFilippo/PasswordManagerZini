@@ -113,12 +113,12 @@
         function edit(id){
             window.location.href = "./edit_password.php?id=" + id;
         }
-        function search(query) {
+        async function search(query) {
             console.log(query);
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "../api/api_search.php?search=" + query);
-            xhr.onload = function() {
-                const data = JSON.parse(xhr.responseText);
+            const dati = await fetch("../api/api_search.php?search=" + query, {
+                credentials: "include",
+            });
+                const data = dati.json();
                 var results = document.getElementById('results');
                 results.innerHTML = "";
 
@@ -159,7 +159,7 @@
                             }
                             td.textContent = data[i][field];
                             row.appendChild(td);
-                            td.appendChild(show);                            
+                            td.appendChild(show);
                         } else {
                             var td = document.createElement('td');
                             td.textContent = data[i][field];
@@ -189,8 +189,6 @@
                 }
 
                 results.appendChild(table);
-}
-                xhr.send();
             }
             onload = function() {
                 search("");
