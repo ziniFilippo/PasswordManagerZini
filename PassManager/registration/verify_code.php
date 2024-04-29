@@ -44,8 +44,9 @@
             $ssl_key = $_GET['key'];
             $file = './tmp'.$mail_id.'.txt';
             $file_handle = fopen($file, 'wr');
-            fwrite($file_handle, "KEY=".$ssl_key);
-            fclose($file_handle);
+            $text = "KEY=".$ssl_key;
+            fwrite($file_handle, $text);
+            //fclose($file_handle);
             header('Content-Description: File Transfer');
             header('Content-Disposition: attachment; filename='.basename($file));
             header('Expires: 0');
