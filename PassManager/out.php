@@ -13,8 +13,8 @@
         $elimina_sessione = $conn->prepare($elimina_sessione);
         $elimina_sessione->bind_param("s", $user_id);
         $elimina_sessione->execute();
-        header("Location: ../login/login.php");
+        header("Location: ./login/login.php");
     } else {
-        header("Location: ../login/login.php");
+        header("Location: ./login/login.php");
     }
 ?>

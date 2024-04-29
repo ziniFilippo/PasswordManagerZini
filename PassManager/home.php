@@ -11,7 +11,7 @@
 ?>
 <body>
     <br>
-    <a href="./logout.php">logout</a>
+    <a href="./out.php">logout</a>
     <br>
     <a href="./passwords/view_password.php">view passwords</a>
     <br>

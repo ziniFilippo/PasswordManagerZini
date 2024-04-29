@@ -11,15 +11,15 @@
                 $timeout = strtotime($timeout);
                 $now = strtotime(date("Y-m-d H:i:s"));
                 if ($now > $timeout) {
-                    header("Location: ./logout.php");
+                    header("Location: ../logout.php");
                     exit;
                 }
             } else {
-                header("Location: ./logout.php");
+                header("Location: ../logout.php");
                 exit;
             }
         } else {
-            header("Location: ./login/login.php");
+            header("Location: ../login/login.php");
             exit;
         }
         $user_id = $session['ACCOUNT_ID'];
