@@ -59,8 +59,10 @@ A tutti quegli utenti che hanno tante password e vogliono una soluzione sicura e
 
 # ISTRUZIONI DI AVVIO
 
-Eseguire il seguente comando per far partire il container Xampp :  docker run --name myXampp -p 22:22 -p 80:80 -d -v /workspaces/PasswordManagerZini/PassManager:/www tomsik68/xampp:8
-
+Eseguire il seguente comando per far partire il container Xampp :  
+```
+docker run --name myXampp -p 22:22 -p 80:80 -d -v /workspaces/PasswordManagerZini/PassManager:/www tomsik68/xampp:8
+```
 
 
 # TODO LIST
