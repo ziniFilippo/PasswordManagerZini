@@ -1,6 +1,6 @@
 <?php
     include "./session/connection.php";
-    include "./session/cookie_check.php";
+    include "./cookie.php";
     $stmt = $conn->prepare("SELECT * FROM ACCOUNT WHERE ID = ?");
     $stmt->bind_param("s", $user_id);
     $stmt->execute();

@@ -70,7 +70,6 @@ docker run --name myXampp -p 22:22 -p 80:80 -d -v /workspaces/PasswordManagerZin
 - importare il database:
 ```
 docker exec myXampp /bin/sh -c "export PATH=/opt/lampp/bin:$PATH &&  mysql -u root < /www/SQL/genera_pass_man.sql"
-
 ```
 
 # TODO LIST

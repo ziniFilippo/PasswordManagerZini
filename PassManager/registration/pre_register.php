@@ -13,11 +13,10 @@
         $salt = bin2hex($salt);
         $password = $password.$salt;
         $ssl_key = base64_encode($password);
-        //setcookie('ssl_key', $ssl_key);
         $hashed_password = hash("sha3-512",$password);
         $datetime = date("Y-m-d H:i:s");
-        $stmt = $conn->prepare("INSERT INTO VERIFICA (mail, sha3 , salt, data_richiesta) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $mail, $hashed_password, $salt, $datetime);
+        $stmt = $conn->prepare("INSERT INTO VERIFICA (mail, sha3 , salt, data_richiesta, ssl_key) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $mail, $hashed_password, $salt, $datetime,$ssl_key);
         $stmt->execute();
         $mail_id = $conn->prepare("SELECT id FROM VERIFICA WHERE mail = ?");
         $mail_id->bind_param("s", $mail);
@@ -25,7 +24,7 @@
         $mail_id = $mail_id->get_result();
         $mail_id = $mail_id->fetch_assoc();
         $mail_id = $mail_id['id'];
-        redirect("./verify_code.php?mail_id=".$mail_id."&key=".$ssl_key);
+        redirect("./verify_code.php?mail_id=$mail_id");
     } else {
         redirect("./register.php?error=Invalid method");
     }

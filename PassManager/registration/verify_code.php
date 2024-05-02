@@ -20,44 +20,30 @@
         if ($result->num_rows > 0) {
             $fetch = $result->fetch_assoc();
             $mail_id = $fetch['ID'];
-        } else {
-            redirect("./register.php");
-        }
-        $validate = $conn->prepare("SELECT * FROM VERIFICA WHERE TOKEN_AUTH = ?");
-        $validate->bind_param("s", $code);
-        $validate->execute();
-        $result = $validate->get_result();
-        if ($result->num_rows > 0) {
-            //raccolgo i dati
-                $fetch = $result->fetch_assoc();
-                $salt = $fetch['SALT'];
-                $password = $fetch['SHA3'];
-                $mail = $fetch['MAIL'];
-            //inserisco i dati
-            $stmt = $conn->prepare("INSERT INTO ACCOUNT (id,mail, sha3, salt) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssss", $mail_id, $mail, $password, $salt);
-            $stmt->execute();
-            //elimino i dati
-            $delete = $conn->prepare("DELETE FROM VERIFICA WHERE TOKEN_AUTH = ?");  
-            $delete->bind_param("s", $code);
-            $delete->execute();
-            $ssl_key = $_GET['key'];
-            $file = './tmp'.$mail_id.'.txt';
-            $file_handle = fopen($file, 'wr');
-            $text = "KEY=".$ssl_key;
-            fwrite($file_handle, $text);
-            //fclose($file_handle);
-            header('Content-Description: File Transfer');
-            header('Content-Disposition: attachment; filename='.basename($file));
-            header('Expires: 0');
-            header('Cache-Control: must-revalidate');
-            header('Pragma: public');
-            header('Content-Length: ' . filesize($file));
-            header("Content-Type: text/plain");
-            readfile($file);
-            //unlink($file);
-            redirect("../login/login.php");
-        } else {
+            $validate = $conn->prepare("SELECT * FROM VERIFICA WHERE TOKEN_AUTH = ?");
+            $validate->bind_param("s", $code);
+            $validate->execute();
+            $result = $validate->get_result();
+            if ($result->num_rows > 0) {
+                //raccolgo i dati
+                    $fetch = $result->fetch_assoc();
+                    $salt = $fetch['SALT'];
+                    $password = $fetch['SHA3'];
+                    $mail = $fetch['MAIL'];
+                    $ssl_key = $fetch['SSL_KEY'];
+                //inserisco i dati
+                $stmt = $conn->prepare("INSERT INTO ACCOUNT (id,mail, sha3, salt) VALUES (?, ?, ?, ?)");
+                $stmt->bind_param("ssss", $mail_id, $mail, $password, $salt);
+                $stmt->execute();
+                //elimino i dati
+                $delete = $conn->prepare("DELETE FROM VERIFICA WHERE TOKEN_AUTH = ?");
+                $delete->bind_param("s", $code);
+                $delete->execute();
+                
+                //redirect("");
+                redirect("../login/login.php?key=$ssl_key&id=$mail_id");
+            }
+        }else {
             redirect("./verify_code.php?error=Invalid code");
         }
     }

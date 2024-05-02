@@ -5,6 +5,11 @@
             if (isset($_GET['error'])){
                 echo $_GET['error']."<br>";
             }
+            if(isset($ssl_key)){
+                $ssl_key = $_GET['key'];
+                $mail_id = $_GET['id'];
+                echo "<script>document.location.href='./download.php?key=$ssl_key&id=$mail_id';</script>";
+            }
         ?>
     </head>
     <body bgcolor="grey">
